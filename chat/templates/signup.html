@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Sign up" %}{% endblock title %}
+{% block description %}{% trans 'Sign up to chat with users or chatbot' %}{% endblock description %}
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron mt-5">
+  <form action="{% url 'signup' %}" method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    <div class="alert alert-warning col-sm-9 offset-sm-3" role="alert">
+      {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+    {% for field in form %}
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="{{ field.auto_id }}">{{ field.label }}</label>
+        <div class="col-sm-9">
+          {{ field }}
+          {% if field.errors %}
+            {{ field.errors }}
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary float-right">{% trans "Sign up" %}</button>
+    <p>{% trans "Already have an account?" %} <a href="{% url 'login' %}">{% trans "Log in!" %}</a></p>
+  </form>
+  </div>
+</div>
+{% endblock content %}

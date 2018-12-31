@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %} Chat Server | {{ site_title }}{% endblock %}
+{% block extrahead %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+	<a href="{% url 'admin:index' %}">
+		Chat Server
+		<span style="color: white"></span>
+	</a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
