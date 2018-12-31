@@ -160,6 +160,7 @@ class Message(models.Model):
 
     def save(self, *args, **kwargs):
         self.thread.last_message = now()
+        self.thread.last_message_read = True
         self.thread.save()
         super(Message, self).save(*args, **kwargs)
         from chat.serializers import MessaageSerializer

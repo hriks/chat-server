@@ -184,7 +184,6 @@ span.btn.btn-default {
 .chat-header {
     background: darkred;
     color: white;
-    cursor: pointer;
 }
 
 .chatcontainer {
@@ -231,3 +230,7 @@ span.btn.btn-default {
     margin-top: 3%;
 }
 
+.fa-times {
+    float: right;
+    cursor: pointer;
+}

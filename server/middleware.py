@@ -14,16 +14,15 @@ def active_user_middleware(get_response):
             from chat.models import publish_socket, Profile
             try:
                 from chat.serializers import FriendSerializer
-                friends = FriendSerializer(
-                    request.user.profile.get_friends(), many=True).data
-                if friends:
-                    publish_socket(
-                        'friends_%s' % request.user.profile.id,
-                        friends
-                    )
+                friends = request.user.profile.get_friends()
             except ObjectDoesNotExist:
                 Profile.objects.get_or_create(user_id=request.user.id)
-
+            if friends:
+                publish_socket(
+                    'friends_%s' % request.user.profile.id,
+                    FriendSerializer(friends, many=True, context={
+                        'profile_id': request.user.profile.id}).data
+                )
         return get_response(request)
 
     return middleware

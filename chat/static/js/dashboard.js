@@ -15,7 +15,6 @@ class Dashboard {
 
 	init() {
 		this.initprofile()
-		this.initfriends()
 		this.initSockets()
 	}
 
@@ -57,8 +56,9 @@ class Dashboard {
 		if (row==null) {
 			return '<div class="col-sm-12 card-friends unavailable">Add Friends from available users</div>' 
 		}
-		var res = '<div class="col-sm-12 card-friends friendName" thread_id="' + row.thread_id + '" profile_name="' + row.username + '" onclick="_dash.initChatBox(this)">'
-		var className = row.last_thread_message ? '' : 'unread'
+		var res = '<div class="col-sm-12 card-friends friendName" thread_id="' + row.thread_id + '" profile_name="' + row.username
+		res += '"last_seen="' + row.last_active + '" onclick="_dash.initChatBox(this)">'
+		var className = row.last_message_read ? '' : 'unread'
 		res += '<p class="username ' + className + '">' + row.username + '<span class="online-info">' + Dashboard.online_attr(row) + '</span></p>'
 		res += '<p class="lastmessage ' + className + '">' + row.last_thread_message + '</p>'
 		res += '</div>' 
@@ -104,7 +104,10 @@ class Dashboard {
 		Dashboard.openMessaageSocket(that.attributes.thread_id.value)
 		$('.chatbox').show(200)
 		$('#thread_input').val(that.attributes.thread_id.value)
-		$('#profilename').html(that.attributes.profile_name.value)
+		var inner_header = that.attributes.profile_name.value
+		inner_header += ' 	<span style="font-size: 9px;"> ( Last seen: ' + that.attributes.last_seen.value + ')</span>'
+		inner_header += '<i class="fa fa-times" onclick="Dashboard.close()"></i>'
+		$('#profilename').html(inner_header)
 		var response = Dashboard.send_xml_request('GET', this.message_api + that.attributes.thread_id.value)[0]
 		var res = ''
 		for (var i = response.length - 1; i >= 0; i--) {
@@ -154,7 +157,6 @@ class Dashboard {
 	static updateFriendRequest(msg) {
 		var data = JSON.parse(msg)
 		if (data.is_friend) {
-			_dash.initfriends()
 			$('#parent_' + data.id).remove()
 		} else {
 			$('#parent_' + data.id).replaceWith(Dashboard.profilesSkeleton(data))
