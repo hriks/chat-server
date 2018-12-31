@@ -12,12 +12,13 @@ def active_user_middleware(get_response):
             cache.set('seen_{}'.format(request.user.username), now(),
                       settings.USER_ONLINE_TIMEOUT)
             from chat.models import publish_socket, Profile
+            friends = None
             try:
-                from chat.serializers import FriendSerializer
                 friends = request.user.profile.get_friends()
             except ObjectDoesNotExist:
                 Profile.objects.get_or_create(user_id=request.user.id)
             if friends:
+                from chat.serializers import FriendSerializer
                 publish_socket(
                     'friends_%s' % request.user.profile.id,
                     FriendSerializer(friends, many=True, context={

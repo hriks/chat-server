@@ -14,6 +14,7 @@ class Dashboard {
 	}
 
 	init() {
+		this.initfriends()
 		this.initprofile()
 		this.initSockets()
 	}
@@ -41,15 +42,7 @@ class Dashboard {
 	}
 
 	initfriends() {
-		var response = Dashboard.send_xml_request('GET', this.friendlist_api)[0]
-		if (response.length == 0) {
-			return this.friendlistContainer.html(Dashboard.friendlistSkeleton())
-		}
-		var res = ''
-		for (var i = response.length - 1; i >= 0; i--) {
-			res += Dashboard.friendlistSkeleton(response[i])
-		}
-		this.friendlistContainer.html(res)
+		return this.friendlistContainer.html(Dashboard.friendlistSkeleton())
 	}
 
 	static friendlistSkeleton(row=null) {
