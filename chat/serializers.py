@@ -50,21 +50,23 @@ class FriendSerializer(serializers.ModelSerializer):
             pytz.timezone('Asia/Kolkata')).strftime("%d %m, %Y %I: %M %p")
 
     def get_thread_id(self, obj):
-        return obj.from_user.threads.get(
-            profiles__in=[obj.to_user.id, self.context.get('profile_id')]).id
+        return obj.from_user.threads.filter(
+            profiles=self.context.get('profile_id')
+        ).get(profiles=obj.to_user.id).id
 
     def get_last_thread_message(self, obj):
-        thread = obj.from_user.threads.get(
-            profiles__in=[obj.to_user.id, self.context.get('profile_id')])
+        thread = obj.from_user.threads.filter(
+            profiles=self.context.get('profile_id')
+        ).get(profiles=obj.to_user.id).id
         messages = Message.objects.filter(thread=thread)
         if messages.exists():
             return messages.latest('time').text
         return ' Send a Message '
 
     def get_last_message_read(self, obj):
-        return obj.from_user.threads.get(
-            profiles__in=[obj.to_user.id, self.context.get('profile_id')]
-        ).last_message_read
+        return obj.from_user.threads.filter(
+            profiles=self.context.get('profile_id')
+        ).get(profiles=obj.to_user.id).last_message_read
 
     class Meta:
         model = Friend
