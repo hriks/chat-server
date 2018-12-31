@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block title %} Chat Server | {{ site_title }}{% endblock %}
+{% block extrahead %}
+  	{{ block.super }}
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="/static/css/custom_base.css">
+{% endblock %}
+
+
+{% block branding %}
+<h1 id="site-name">
+	<a>Chat Server<span style="color: white"></span></a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

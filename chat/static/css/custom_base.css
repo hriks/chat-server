@@ -1,0 +1,233 @@
+html, body {
+    height: 100%;
+    background-color: #f7f7f7;
+    overflow: hidden;
+}
+
+#header {
+	width: auto;
+    height: 45px;
+    padding: 10px 40px;
+    background: red;
+    line-height: 30px;
+    color: beige;
+    overflow: hidden;
+}
+
+h1#site-name > a {
+	color: white !important;
+}
+
+div.breadcrumbs {
+    background: darkred;
+    padding: 3px 40px;
+    border: none;
+    font-size: 12px;
+    color: #c4dce8;
+    text-align: left;
+}
+
+.container {
+	padding-right: 15% !important;
+    padding-left: 15% !important;
+}
+
+#container {
+    height: 100% !important;
+}
+
+ul.errorlist > li {
+	background-color: #fcf8e3;
+}
+
+.jumbotron p {
+    font-size: 12px;
+}
+
+.col-sm-9 > ul.errorlist {
+	background-color: initial !important;
+}
+
+.col-sm-9 > ul.errorlist > li {
+	background-color: initial !important;
+}
+
+#content {
+    height: calc(100% - 65px);
+    padding: 0;
+    padding-top: 20px;
+}
+
+div.row.row-main {
+    height: 100%;
+    margin: 0;
+}
+
+.column {
+    height: 100%;
+}
+
+/*div.col-sm-3 {
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,0.01), -5px 1px 12px -1px rgba(0,0,0,0.1);
+}*/
+
+.card-friends {
+    background: white;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.card-profile {
+    background: white;
+    padding: 2px;
+}
+
+.header-bar {
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    font-weight: 500;
+}
+
+.profile-list {
+    height: calc(100% - 30px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+div.col-sm-12.card-profile {
+    text-align: center;
+}
+
+.addFriend {
+    opacity: 0.8;
+    font-weight: bold;
+    background: aliceblue;
+    padding: 10px;
+    margin-bottom: 0;
+    cursor: pointer;
+    width: 100%;
+}
+
+span.btn.btn-default {
+    width: 44%;
+    display: inline-block;
+    margin: 1%;
+    opacity: 0.8;
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 0;
+    cursor: pointer;
+    color: white;
+}
+
+.accept {
+    background-color: green;
+}
+
+.reject {
+    background-color: red;
+}
+
+.friends-list {
+
+}
+
+.unavailable {
+    padding: 15%;
+}
+
+.unread {
+    font-weight: bold;
+}
+
+.online-info {
+    float: right;
+}
+
+.username {
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    padding-bottom: 0;
+    margin: 0;
+}
+
+.lastmessage {
+    font-family: "Raleway", sans-serif;
+    font-size: 12px;
+    padding: 10px;
+    opacity: 0.7;
+    margin: 0;
+    padding-top: 0;
+}
+
+.friendName {
+    cursor: pointer;
+}
+
+.online {
+    color: green;
+}
+
+.offline {
+    color: silver;
+}
+
+.chatbox {
+    position: fixed;
+    right: 3%;
+    bottom: 0;
+    width: 25%;
+    height: 65%;
+}
+
+.chat-header {
+    background: darkred;
+    color: white;
+    cursor: pointer;
+}
+
+.chatcontainer {
+    height: calc(100% - 120px);
+    background: white;
+    overflow-y: scroll;
+    padding: 2%;
+}
+
+.chatfooter {
+    background-color: white;
+    height: calc(100% - 323px);
+}
+
+.left-chat {
+    background: ghostwhite;
+    padding: 4%;
+    width: 75%;
+    font-size: 12px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    float: left;
+}
+
+.right-chat {
+    background: beige;
+    padding: 4%;
+    width: 75%;
+    font-size: 12px;
+    border-top-left-radius: 15px;
+    float: right;
+    border-bottom-right-radius: 15px;
+}
+
+.chatbox {
+    display: none;
+}
+
+.chat-time {
+    display: block;
+    opacity: 0.6;
+    font-size: 9px;
+    text-align: right;
+    margin-top: 3%;
+}
+
